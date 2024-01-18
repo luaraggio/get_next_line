@@ -6,21 +6,11 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:05:48 by lraggio           #+#    #+#             */
-/*   Updated: 2024/01/17 22:40:55 by lraggio          ###   ########.fr       */
+/*   Updated: 2024/01/17 23:04:34 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -43,7 +33,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	return (NULL);
 }
-
 
 char	*ft_strcpy(char *dest, char *src)
 {
