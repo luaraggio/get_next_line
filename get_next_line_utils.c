@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:05:48 by lraggio           #+#    #+#             */
-/*   Updated: 2024/01/17 20:20:35 by lraggio          ###   ########.fr       */
+/*   Updated: 2024/01/17 22:40:55 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 }
 
 
-static char	*ft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, char *src)
 {
 	while (*src != '\0')
 	{
@@ -85,7 +85,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (!c)
 		return (&ss[i]);
-	return (NULL)
+	return (NULL);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

@@ -6,21 +6,22 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 22:12:10 by lraggio           #+#    #+#             */
-/*   Updated: 2024/01/17 20:32:08 by lraggio          ###   ########.fr       */
+/*   Updated: 2024/01/17 22:43:44 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 int	main(void)
 {
 	int	fd;
 	char	*s;
-	char	lines;
+	int	lines;
 
 	lines = 1;
-	while (lines = get_next_line(fd))
+	while ((s = get_next_line(fd))
 	fd = open("ara.txt", O_RDONLY);
 	while ((lines = read(fd, s, BUFFER_SIZE)))
 	{

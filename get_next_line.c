@@ -6,13 +6,13 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:05:34 by lraggio           #+#    #+#             */
-/*   Updated: 2024/01/17 20:35:03 by lraggio          ###   ########.fr       */
+/*   Updated: 2024/01/17 22:39:11 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*get_line(int fd, char *backup, char *str)
+char	*get_line(int fd, char *backup, char *str)
 {
 	int	read_line;
 	
@@ -33,7 +33,7 @@ static char	*get_line(int fd, char *backup, char *str)
 	return (backup);
 }
 
-static char	*get_backup(char *line)
+char	*get_backup(char *line)
 {
 	int	i;
 	char	*temporary;
@@ -44,7 +44,8 @@ static char	*get_backup(char *line)
 	if (line[i] == '\0')
 		return (NULL);
 	temporary = ft_substr(line, i + 1, ft_strlen(line));
-	line[i + 1] == '\0';
+	i++;
+	line[i] = '\0';
 	return (temporary);
 }
 
@@ -55,7 +56,7 @@ char    *get_next_line(int fd)
 
         if (BUFFER_SIZE <= 0 || fd < 0)
                 return (NULL);
-        line = malloc((sizeof(char) * (BUFFER_SIZE + 1));
+        line = malloc((sizeof(char) * (BUFFER_SIZE + 1)));
         if (!line)
                 return (NULL);
         line = get_line(fd, backup, line);
