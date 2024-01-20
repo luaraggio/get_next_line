@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:05:34 by lraggio           #+#    #+#             */
-/*   Updated: 2024/01/17 23:14:52 by lraggio          ###   ########.fr       */
+/*   Updated: 2024/01/19 22:35:19 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*get_line(int fd, char *backup, char *str)
 {
 	int	read_line;
 
-	while (read_line != '\0')
+	read_line = 1;
+	while (read_line)
 	{
 		read_line = read(fd, str, BUFFER_SIZE);
 		if (read_line < 0)
@@ -49,11 +50,16 @@ char	*get_backup(char *line)
 	char	*temporary;
 
 	i = 0;
-	while (!(line[i] == '\n' || line[i] == '\0'))
+	while ((line[i] != '\n' && line[i] != '\0'))
 		i++;
 	if (line[i] == '\0')
 		return (NULL);
-	temporary = ft_substr(line, i + 1, ft_strlen(line));
+	temporary = ft_substr(line, i + 1, ft_strlen(line) - i);
+	if (*temporary == '\0')
+	{
+		free(temporary);
+		temporary = NULL;
+	}
 	i++;
 	line[i] = '\0';
 	return (temporary);
