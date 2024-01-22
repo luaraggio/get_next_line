@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:05:34 by lraggio           #+#    #+#             */
-/*   Updated: 2024/01/19 22:35:19 by lraggio          ###   ########.fr       */
+/*   Updated: 2024/01/22 17:50:53 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ size_t	ft_strlen(const char *str)
 
 char	*get_line(int fd, char *backup, char *str)
 {
-	int	read_line;
+	int		read_line;
+	char	*intermediary;
 
 	read_line = 1;
 	while (read_line)
@@ -37,7 +38,9 @@ char	*get_line(int fd, char *backup, char *str)
 		str[read_line] = '\0';
 		if (!backup)
 			backup = ft_strdup("");
-		backup = ft_strjoin(backup, str);
+		intermediary = backup;
+		backup = ft_strjoin(intermediary, str);
+		free(intermediary);
 		if (ft_strchr(backup, '\n') != NULL)
 			break ;
 	}
@@ -68,14 +71,18 @@ char	*get_backup(char *line)
 char	*get_next_line(int fd)
 {
 	static char	*backup;
+	char		*buffer;
 	char		*line;
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
 		return (NULL);
-	line = malloc((sizeof(char) * (BUFFER_SIZE + 1)));
+	buffer = malloc((sizeof(char) * (BUFFER_SIZE + 1)));
+	if (!buffer)
+		return (NULL);
+	line = get_line(fd, backup, buffer);
+	free(buffer);
 	if (!line)
 		return (NULL);
-	line = get_line(fd, backup, line);
 	backup = get_backup(line);
 	return (line);
 }
