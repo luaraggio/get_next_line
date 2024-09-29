@@ -26,7 +26,6 @@
     <li><a href="#compilation-instructions">Compilation Instructions</a></li>
     <li><a href="#buffer-size-handling">Buffer Size Handling</a></li>
     <li><a href="#important-notes">Important Notes</a></li>
-    <li><a href="#license">License</a></li>
 </ul>
 
 <h2 id="function-prototype">Function Prototype</h2>
